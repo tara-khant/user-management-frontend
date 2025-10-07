@@ -102,3 +102,8 @@ The page will reload automatically on code changes.
 - React Query or Context API is used for global state management.  
 - Axios is configured to handle API requests to the Platzi API.  
 - The app is fully responsive and mobile-friendly.
+
+# Environment Variables
+
+Create a `.env` file in the root of the project and add the following:
+  REACT_APP_API_URL=https://api.escuelajs.co/api/v1

@@ -1,47 +1,15 @@
 import React from 'react';
-import { Table, Spin, Alert } from 'antd';
+import { Table, Spin, Alert, Button } from 'antd';
 import { useUsers } from '../../../services/useUsers';
+import { columns } from './Columns';
 
-const UserListingView = () => {
-  const { data, isLoading, isError, error } = useUsers();
-
-  const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-      width: 70,
-    },
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-    },
-    {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-      render: (role) => <span className="capitalize">{role}</span>,
-    },
-    {
-      title: 'Avatar',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      render: (avatar) => (
-        <img
-          src={avatar}
-          alt="User Avatar"
-          className="w-10 h-10 rounded-full object-cover"
-        />
-      ),
-    },
-  ];
-
+const UserListingView = ({
+  onCreateUser,
+  onClickListItem,
+  onDelete,
+  onEdit,
+}) => {
+  const { data: users = [], isLoading, isError, error } = useUsers();
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -63,12 +31,20 @@ const UserListingView = () => {
     );
   }
 
+  const sortedUsers = [...users].reverse();
+
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Users Listing</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">Users List</h1>
+        <Button type="primary" onClick={onCreateUser}>
+          Create User
+        </Button>
+      </div>
+
       <Table
-        columns={columns}
-        dataSource={data}
+        columns={columns({ onDelete, onClickListItem, onEdit })}
+        dataSource={sortedUsers}
         rowKey="id"
         bordered
         pagination={{ pageSize: 10 }}

@@ -15,9 +15,7 @@ const Header = () => {
       okType: 'danger',
       cancelText: 'Cancel',
       onOk() {
-        // Clear token/session
         localStorage.removeItem('token');
-        // Redirect to login or home page
         navigate('/');
       },
       onCancel() {

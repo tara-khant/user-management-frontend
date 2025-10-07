@@ -34,15 +34,15 @@ axiosClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    const status = error?.response?.status;
+    // const status = error?.response?.status;
 
-    if (
-      status === 401 &&
-      !EXCLUDE_REDIRECT_PATHS.includes(window.location.pathname)
-    ) {
-      localStorage.clear();
-      window.location.href = '/login';
-    }
+    // if (
+    //   status === 401 &&
+    //   !EXCLUDE_REDIRECT_PATHS.includes(window.location.pathname)
+    // ) {
+    //   localStorage.clear();
+    //   window.location.href = '/login';
+    // }
 
     return Promise.reject(error);
   }

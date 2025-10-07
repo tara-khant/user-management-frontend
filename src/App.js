@@ -27,7 +27,9 @@ function App() {
           }
         >
           <Route index element={<User.Listing />} />
-          {/* <Route path=":id" element={<UserDetailsPage />} /> */}
+          <Route path="create" element={<User.Create />} />
+          <Route path=":id" element={<User.Details />} />
+          <Route path="edit/:id" element={<User.EditUser />} />
         </Route>
       </Routes>
     </Router>

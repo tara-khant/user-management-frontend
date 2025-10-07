@@ -1,0 +1,22 @@
+{
+  "extends": ["react-app", "react-app/jest"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@modules", "./src/modules"],
+          ["@services", "./src/services"],
+          ["@hooks", "./src/hooks"],
+          ["@components", "./src/components"],
+          ["@config", "./src/config"]
+        ],
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}

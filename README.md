@@ -1,52 +1,104 @@
-# 🧑‍💼 User Management System
+# 🧑‍💼 User Management System (Frontend)
 
-This is a **Frontend- User Management System** built with **React.js** and **Tailwind CSS**, integrated with the [Platzi API](https://api.escuelajs.co/api/v1).  
-It supports **JWT-based authentication**, **protected routes**, **user CRUD operations**, **multiple addresses per user (frontend-only)**, and **Light/Dark theme toggle**.
+This is the **Frontend** of a **User Management System** built with **React.js** and **Tailwind CSS**, integrated with the [Platzi API](https://api.escuelajs.co/api/v1).  
 
----
-
-## 🚀 Features
-
-### 🔐 Authentication
-- Login / Logout using JWT via Platzi API  
-- Token stored in `localStorage` or `sessionStorage`  
-- Protected routes for user-related pages  
-- Logout clears token and redirects to login  
-
-### 👥 User Management (CRUD)
-- Fetch all users  
-- View single user details  
-- Add new user (with multiple addresses)  
-- Edit user information  
-- Delete user  
-
-> 🏠 **Addresses** are handled **locally in the frontend** since the Platzi API doesn’t support them.
-
-### 🎨 UI & Theming
-- Built with **Tailwind CSS**  
-- Light / Dark mode toggle  
-- Theme preference persists across reloads  
-- Fully responsive for desktop & mobile  
-- Clean, accessible, and modern design  
-
-### 🧰 Tech Stack
-- **React.js (Functional Components + Hooks)**  
-- **React Router** – Routing & Protected Routes  
-- **React Query / Context API** – State & API data management  
-- **Axios** – API communication  
-- **Tailwind CSS** – Styling  
-- **Platzi API** – Authentication & User data  
+The system allows you to manage users with features like login, fetching users, creating, updating, and deleting users.
 
 ---
 
-## 📦 API Reference
+## 🧰 Tech Stack
 
-### 🔑 Authentication
-**POST** `https://api.escuelajs.co/api/v1/auth/login`
+- **React.js** (Functional Components + Hooks)  
+- **Tailwind CSS** (Styling)  
+- **React Router DOM** (Routing & Protected Routes)  
+- **Axios** (API requests)  
+- **React Query / Context API** (State management)  
+- **Platzi API** (Authentication & Users)  
 
-**Body:**
+---
+
+## 📂 Folder Structure
+
+```
+src/
+├─ components/   # Reusable UI components
+├─ context/      # Theme/Auth context
+├─ hooks/        # Custom React hooks
+├─ Modules/      # Modules: auth, user
+├─ routes/       # ProtectedRoute & routing setup
+├─ services/     # API calls
+├─ styles/       # Tailwind or custom CSS
+├─ App.js        # Main app component
+└─ index.js      # Entry point
+```
+
+---
+
+## 🔗 API Reference
+
+**Base URL:** `https://api.escuelajs.co/api/v1`
+
+| Method | Endpoint       | Description                  |
+|--------|----------------|------------------------------|
+| POST   | `/auth/login`  | Login & get JWT              |
+| GET    | `/users`       | Fetch all users              |
+| GET    | `/users/:id`   | Fetch single user            |
+| POST   | `/users`       | Create new user              |
+| PUT    | `/users/:id`   | Update existing user         |
+| DELETE | `/users/:id`   | Delete user                  |
+
+**User Schema Example**
+
 ```json
 {
-  "email": "john@mail.com",
-  "password": "changeme"
+  "id": 1,
+  "name": "John Doe",
+  "role": "admin",
+  "email": "john@example.com",
+  "password": "secret123",
+  "avatar": "https://example.com/avatar.png",
+  "addresses": [
+    {
+      "street": "123 Main St",
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "zip": "380001"
+    }
+  ]
 }
+```
+
+---
+
+## 🚀 Getting Started
+
+Run these commands in your project directory:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the app.  
+The page will reload automatically on code changes.
+
+---
+
+## 📝 Features
+
+- User authentication (Login & Logout)  
+- View all users in a table or list  
+- Create, update, and delete users  
+- Protected routes based on authentication  
+- Responsive UI using Tailwind CSS  
+
+---
+
+## ⚡ Notes
+
+- React Query or Context API is used for global state management.  
+- Axios is configured to handle API requests to the Platzi API.  
+- The app is fully responsive and mobile-friendly.

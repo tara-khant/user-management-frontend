@@ -1,12 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}', // scan all JS/TS/React files in src
-  ],
+  darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {}, // you can extend default Tailwind theme here
+    extend: {},
   },
-  plugins: [], // you can add Tailwind plugins here
+  plugins: [],
 };
 
 module.exports = config;
